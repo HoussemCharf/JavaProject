@@ -74,8 +74,13 @@ public class MainLoginController {
                     if(isValidCredentials(userType,userName,password,"ID")){
                         // HCODE here
                         try{
-                            Parent studentParent = FXMLLoader.load(getClass().getResource("/student/Student.fxml"));
+                            Student controStudent = new Student();// fxmlLoader.<Student>getController();
+                            controStudent.setStudentId(userName);
+                            Student.ID=new String(userName);
+                        	FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/student/Student.fxml"));
+                            Parent studentParent = (Parent)fxmlLoader.load();
                             Scene studentScene = new Scene(studentParent);
+
                             Stage studentStage = (Stage)((Node) event.getSource()).getScene().getWindow();
                             studentStage.hide();
                             studentStage.setScene(studentScene);
@@ -88,10 +93,13 @@ public class MainLoginController {
                     }
                     break;
                 case "Teacher":
-                    if (isValidCredentials(userType,userName,password,"ID")){
+                    if (isValidCredentials(userType,userName,password,"Email")){
                             //add code
                         try{
-                            Parent teacherParent = FXMLLoader.load(getClass().getResource("/teacher/Teacher.fxml"));
+                        	TeacherController teacher = new TeacherController();
+                        	teacher.setEmail(userName);
+                        	FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/teacher/Teacher.fxml"));
+                            Parent teacherParent = fxmlLoader.load();
                             Scene teacherScene = new Scene(teacherParent);
                             Stage teacherStage = (Stage)((Node) event.getSource()).getScene().getWindow();
                             teacherStage.hide();

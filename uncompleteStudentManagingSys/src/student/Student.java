@@ -87,7 +87,7 @@ public class Student {
 
     private MenuBarControl menuBarControl = new MenuBarControl();
 
-    static String ID;
+    public static String ID;
     public void setStudentId(String ID){
         this.ID = ID;
     }
@@ -291,14 +291,15 @@ public class Student {
         studentRCourseColumnSec.setCellValueFactory(new PropertyValueFactory<RegistrationTableData,String>("courseTableDataSec"));
 
         registrationController = new RegistrationController();
-        studentRunningCourseTableView.setItems(registrationController.getDataFromCurrentCourseAndAddToObservableList("SELECT * FROM studentgpa WHERE dbstudentgpaID = '"+ID+"';"));
+        System.err.println("Id :"+ID);
+        studentRunningCourseTableView.setItems(registrationController.getDataFromCurrentCourseAndAddToObservableList("SELECT * FROM studentgpa WHERE dbstudentgpaID = "+ID+";"));
 
 
         resultHistoryColumnCode.setCellValueFactory(new PropertyValueFactory<resultHistoryTableData,String>("resultHistoryTableCourseCode"));
         resultHistoryColumnSec.setCellValueFactory(new PropertyValueFactory<resultHistoryTableData,String>("resultHistoryTableSec"));
         resultHistoryColumnGPA.setCellValueFactory(new PropertyValueFactory<resultHistoryTableData,String>("resultHistoryTableGPA"));
 
-        resultHistoryTableView.setItems(getDataFromResultHistoryAndAddToObservableList("SELECT * FROM studentgpa WHERE dbstudentgpaID = '"+ID+"';"));
+        //resultHistoryTableView.setItems(getDataFromResultHistoryAndAddToObservableList("SELECT * FROM studentgpa WHERE dbstudentgpaID = '"+ID+"';"));
 
     }
 
