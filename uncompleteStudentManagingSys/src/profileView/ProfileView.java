@@ -106,7 +106,6 @@ public class ProfileView {
         // add code
         // you are going to select all GPA in this query from sem 1 to 12
     	String sqlQuery = "select * from student where dbStudentID= "+currentInfo.getfullId();
-    	System.err.println(sqlQuery);
         // 	handling the chart!
         // read XYchart documentation please why you do dis!!! why me!!!
         try {
@@ -115,19 +114,11 @@ public class ProfileView {
             statement = connection.createStatement();
             resultSet = statement.executeQuery(sqlQuery);
             while (resultSet.next()){
-            	
-            	gpaLineChart.getData().add(new XYChart.Data<String, Number>("S1",resultSet.getDouble("dbStudent1thSemGpa")));
-            	gpaLineChart.getData().add(new XYChart.Data<String, Number>("S2",resultSet.getDouble("dbStudent2thSemGpa")));
-            	gpaLineChart.getData().add(new XYChart.Data<String, Number>("S3",resultSet.getDouble("dbStudent3thSemGpa")));
-            	gpaLineChart.getData().add(new XYChart.Data<String, Number>("S4",resultSet.getDouble("dbStudent4thSemGpa")));
-            	gpaLineChart.getData().add(new XYChart.Data<String, Number>("S5",resultSet.getDouble("dbStudent5thSemGpa")));
-            	gpaLineChart.getData().add(new XYChart.Data<String, Number>("S6",resultSet.getDouble("dbStudent6thSemGpa")));
-            	gpaLineChart.getData().add(new XYChart.Data<String, Number>("S7",resultSet.getDouble("dbStudent7thSemGpa")));
-            	/*gpaLineChart.getData().add(new XYChart.Data<String, Number>("S8",resultSet.getDouble("dbStudent8thSemGpa")));
-            	gpaLineChart.getData().add(new XYChart.Data<String, Number>("S9",resultSet.getDouble("dbStudent9thSemGpa")));
-            	gpaLineChart.getData().add(new XYChart.Data<String, Number>("S10",resultSet.getDouble("dbStudent10thSemGpa")));
-            	gpaLineChart.getData().add(new XYChart.Data<String, Number>("S11",resultSet.getDouble("dbStudent11thSemGpa")));
-            	gpaLineChart.getData().add(new XYChart.Data<String, Number>("S12",resultSet.getDouble("dbStudent12thSemGpa")));*/
+
+				for (int i=1;i<12;i++) {
+					if (resultSet.getDouble("dbStudent"+i+"thSemGpa") >0)
+						gpaLineChart.getData().add(new XYChart.Data<String, Number>("S"+i,resultSet.getDouble("dbStudent"+i+"thSemGpa")));
+            	}
             }
 
         }

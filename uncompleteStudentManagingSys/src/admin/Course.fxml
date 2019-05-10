@@ -111,7 +111,6 @@
                             <children>
                                 <TextField fx:id="courseTFSearch" layoutX="548.0" layoutY="14.0" promptText="Course Code" AnchorPane.rightAnchor="127.0" />
                                 <Button layoutX="721.0" layoutY="14.0" mnemonicParsing="false" onAction="#setCourseSearchButtonClick" prefHeight="25.0" prefWidth="80.0" style="-fx-background-color: #09B28C;" text="Search" textFill="WHITE" AnchorPane.rightAnchor="23.0" />
-                                <Button layoutX="46.0" layoutY="14.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="80.0" style="-fx-background-color: #09B28C;" text="View" textFill="WHITE" AnchorPane.leftAnchor="46.0" />
                                 <Button layoutX="146.0" layoutY="14.0" mnemonicParsing="false" onAction="#setCourseRefreshButtonClick" prefHeight="25.0" prefWidth="80.0" style="-fx-background-color: #09B28C;" text="Refresh" textFill="WHITE" AnchorPane.leftAnchor="146.0" />
                                 <TableView fx:id="adminCourseTableView" layoutX="2.0" layoutY="55.0" prefHeight="533.0" prefWidth="822.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="2.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="55.0">
                                     <columns>

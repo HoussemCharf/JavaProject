@@ -291,7 +291,8 @@ public class Student {
         studentRCourseColumnSec.setCellValueFactory(new PropertyValueFactory<RegistrationTableData,String>("courseTableDataSec"));
 
         registrationController = new RegistrationController();
-        System.err.println("Id :"+ID);
+        registrationController.setID(ID);
+        //System.err.println("Id :"+ID);
         studentRunningCourseTableView.setItems(registrationController.getDataFromCurrentCourseAndAddToObservableList("SELECT * FROM studentgpa WHERE dbstudentgpaID = "+ID+";"));
 
 
